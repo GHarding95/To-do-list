@@ -30,10 +30,5 @@ To-do list app created with React, Typescript & Redux for state management, crea
 ### To Run
 
 1. Clone the repository
-2. Install dependencies:
-
-npm install
-
-3. Start the development server
-
-npm run dev
+2. Install dependencies: npm install
+3. Start the development server: npm run dev
