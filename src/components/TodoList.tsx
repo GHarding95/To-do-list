@@ -8,6 +8,11 @@ const TodoList: React.FC = () => {
   const todos = useSelector((state: RootState) => state.todos.todos);
   const dispatch = useDispatch();
 
+  // Sort todos alphabetically by text
+  const sortedTodos = [...todos].sort((a, b) => 
+    a.text.toLowerCase().localeCompare(b.text.toLowerCase())
+  );
+
   const handleToggle = (id: string): void => {
     dispatch(toggleTodo(id));
   };
@@ -26,12 +31,10 @@ const TodoList: React.FC = () => {
 
   return (
     <div className="space-y-2">
-      {todos.map((todo, index) => (
+      {sortedTodos.map((todo, index) => (
         <div
           key={todo.id}
-          className="card group flex items-center justify-between animate-slide-in hover:shadow-md transition-all duration-200"
-          style={{ animationDelay: `${index * 50}ms` }}
-        >
+          className="card group flex items-center justify-between animate-slide-in hover:shadow-md transition-all duration-200">
           <div className="flex items-center space-x-4 flex-1">
             <button
               onClick={(e: TodoButtonEvent) => handleToggle(todo.id)}
